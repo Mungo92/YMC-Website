@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yass Valley Men's Shed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #faf7f2;
+      --warm-white: #fff9f2;
+      --timber:     #b5621e;
+      --timber-dk:  #8c4a16;
+      --timber-lt:  #e8d5c0;
+      --sand:       #f0e6d8;
+      --bark:       #3b2410;
+      --bark-mid:   #6b4423;
+      --muted:      #9a7c68;
+      --green:      #4a7c59;
+      --text-body:  #5a3e2c;
+      --border:     #e2d0be;
+      --radius:     16px;
+      --shadow:     0 4px 24px rgba(59,36,16,0.08);
+      --shadow-lg:  0 12px 48px rgba(59,36,16,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--bark);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 max(1.5rem, 5vw);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--timber);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .nav-logo-text { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; color: var(--bark); line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 0.72rem; color: var(--muted); font-family: 'Nunito', sans-serif; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--bark-mid); font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--timber); }
+    .nav-cta {
+      background: var(--timber); color: #fff; border: none;
+      padding: 0.55rem 1.25rem; border-radius: 8px; font-size: 0.85rem;
+      font-weight: 700; font-family: 'Nunito', sans-serif; cursor: pointer;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--timber-dk); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: max(4rem, 8vw) max(1.5rem, 5vw) max(3rem, 6vw);
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 700; line-height: 1.1; color: var(--bark);
+      letter-spacing: -0.02em; margin-bottom: 1.25rem;
+    }
+    h1 em { font-style: italic; color: var(--timber); }
+    .hero-sub { font-size: 1.05rem; color: var(--text-body); max-width: 420px; line-height: 1.7; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--timber); color: #fff; padding: 0.75rem 1.6rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(181,98,30,0.3);
+    }
+    .btn-primary:hover { background: var(--timber-dk); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(181,98,30,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--bark-mid); border: 2px solid var(--border);
+      padding: 0.75rem 1.6rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--timber); color: var(--timber); }
+
+    .hero-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg);
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--timber), #d4884a, var(--timber-lt));
+    }
+    .hero-card-title {
+      font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; color: var(--bark);
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-card-title svg { color: var(--timber); flex-shrink: 0; }
+    .hours-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.65rem 0.85rem; border-radius: 10px; background: var(--sand); gap: 1rem;
+    }
+    .hours-row.special { background: rgba(74,124,89,0.08); border: 1px solid rgba(74,124,89,0.15); }
+    .hours-day { font-weight: 700; font-size: 0.88rem; color: var(--bark); }
+    .hours-time { font-size: 0.82rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .hours-row.special .hours-day { color: var(--green); }
+    .hero-card-note {
+      margin-top: 1rem; font-size: 0.78rem; color: var(--muted);
+      background: rgba(74,124,89,0.06); border-radius: 8px; padding: 0.65rem 0.85rem;
+      border-left: 3px solid var(--green); line-height: 1.55;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem max(1.5rem, 5vw); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--timber); margin-bottom: 0.6rem; }
+    h2 {
+      font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700; color: var(--bark); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .section-lead { font-size: 1.05rem; color: var(--text-body); max-width: 580px; line-height: 1.7; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--warm-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-text p { color: var(--text-body); line-height: 1.75; margin-bottom: 1rem; font-size: 0.97rem; }
+    .mission-card {
+      background: var(--sand); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem; position: relative; overflow: hidden;
+    }
+    .mission-card::before {
+      content: '"'; position: absolute; top: -0.5rem; right: 1.5rem;
+      font-family: 'Fraunces', serif; font-size: 8rem; color: var(--timber-lt);
+      line-height: 1; pointer-events: none;
+    }
+    .mission-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--timber); margin-bottom: 0.75rem; }
+    .mission-text { font-family: 'Fraunces', serif; font-size: 1.15rem; line-height: 1.65; color: var(--bark); font-style: italic; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .stat-block { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; text-align: center; }
+    .stat-block .num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--timber); }
+    .stat-block .lbl { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-top: 0.2rem; }
+
+    /* ── OFFERS ── */
+    .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+    .offer-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .offer-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+    }
+    .offer-icon.timber { background: rgba(181,98,30,0.1); color: var(--timber); }
+    .offer-icon.green  { background: rgba(74,124,89,0.1); color: var(--green); }
+    .offer-icon.sand   { background: var(--sand); color: var(--bark-mid); }
+    .offer-card h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--bark); margin-bottom: 0.5rem; }
+    .offer-card p { font-size: 0.88rem; color: var(--text-body); line-height: 1.65; }
+
+    /* ── MORNING TEA ── */
+    .tea-section { background: var(--sand); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .tea-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .tea-visual {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem; text-align: center; box-shadow: var(--shadow);
+    }
+    .tea-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: rgba(181,98,30,0.1); color: var(--timber);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+    }
+    .tea-visual h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--bark); margin-bottom: 0.5rem; }
+    .tea-visual p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .tea-content p { color: var(--text-body); line-height: 1.75; font-size: 0.97rem; margin-bottom: 1rem; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .contact-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .contact-card-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--timber); margin-bottom: 0.25rem; }
+    .contact-row { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .contact-row-icon {
+      width: 28px; height: 28px; border-radius: 7px; background: var(--sand); color: var(--bark-mid);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem;
+    }
+    .contact-row-text { font-size: 0.9rem; color: var(--text-body); }
+    .contact-row-text strong { display: block; color: var(--bark); font-size: 0.78rem; font-weight: 700; margin-bottom: 0.15rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .contact-row-text a { color: var(--timber); text-decoration: none; }
+    .contact-row-text a:hover { text-decoration: underline; }
+    .map-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; grid-column: 1 / -1;
+    }
+    .map-card iframe { width: 100%; height: 340px; border: none; display: block; }
+    .map-footer {
+      padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-body);
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+    .map-footer a { color: var(--timber); text-decoration: none; font-weight: 700; font-size: 0.82rem; }
+    .map-footer a:hover { text-decoration: underline; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--bark); padding: 5rem max(1.5rem, 5vw); text-align: center; }
+    .cta-section h2 { color: #fff; }
+    .cta-section p { color: rgba(255,255,255,0.65); font-size: 1rem; margin: 1rem auto 2rem; max-width: 480px; line-height: 1.7; }
+    .btn-light {
+      background: var(--timber-lt); color: var(--bark); padding: 0.8rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-light:hover { background: #fff; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #2a1608; color: rgba(255,255,255,0.45);
+      padding: 2rem max(1.5rem, 5vw); font-size: 0.78rem; text-align: center; line-height: 1.7;
+    }
+    footer a { color: rgba(255,255,255,0.6); }
+
+    .woodgrain-divider {
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--timber-lt) 0px, var(--timber) 40px, var(--timber-lt) 80px, var(--sand) 120px, var(--timber-lt) 160px);
+      opacity: 0.45;
+    }
+
+    @media (max-width: 768px) {
+      .hero, .about-grid, .tea-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .offers-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="nav-logo-text">
+          Yass Valley Men's Shed
+          <span>Est. 2008 &middot; Yass, NSW</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Newsletters</a></li>
+        <li><a href="#">Useful Links</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://yassmensshed.org.au/wp-content/uploads/2026/02/Updated-Membership-Form.pdf" target="_blank" class="nav-cta">Join the Shed</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <h1>Where blokes<br>come <em>together.</em></h1>
+      <p class="hero-sub">A workshop, a community, and a good cup of coffee. Come along for the projects, the skills, or just the company.</p>
+      <div class="hero-actions">
+        <a href="https://yassmensshed.org.au/wp-content/uploads/2026/02/Updated-Membership-Form.pdf" target="_blank" class="btn-primary">Get your membership form</a>
+        <a href="#contact" class="btn-outline">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Opening Hours
+      </div>
+      <ul class="hours-list">
+        <li class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">9:00 am &ndash; 12:00 pm</span></li>
+        <li class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">1:30 pm &ndash; 4:30 pm</span></li>
+        <li class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">1:30 pm &ndash; 4:30 pm</span></li>
+        <li class="hours-row special"><span class="hours-day">1st Wednesday</span><span class="hours-time">10:00 am &ndash; 11:30 am</span></li>
+      </ul>
+      <div class="hero-card-note">Every first Wednesday: Morning Tea with cakes and pastries donated by Woolworths, Yass. No workshop noise, just good conversation.</div>
+    </div>
+  </div>
+
+  <div class="woodgrain-divider"></div>
+
+  <section class="about">
+    <div class="section-inner about-grid">
+      <div class="about-text">
+        <div class="section-label">About the Shed</div>
+        <h2>Minimal bureaucracy.<br>Maximum fun.</h2>
+        <p>The Yass Valley Men's Shed is a welcoming community space where men of all ages and backgrounds can come together. Whether you want to work on a project, pick up a new skill, or just enjoy good company over a coffee, there is a place for you here.</p>
+        <p>We have a well-equipped workshop with woodworking and metalworking tools. Our members are happy to help, share what they know, or just have a yarn.</p>
+        <div class="about-stats">
+          <div class="stat-block"><div class="num">3&times;</div><div class="lbl">per week</div></div>
+          <div class="stat-block"><div class="num">&rsquo;08</div><div class="lbl">est. Yass Valley</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="mission-card">
+          <div class="mission-label">Our Mission</div>
+          <p class="mission-text">To provide a unique and practical way of addressing men&rsquo;s health and wellbeing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="section-label">What we offer</div>
+      <h2>Something for everyone</h2>
+      <p class="section-lead">Whatever brings you through the door, you will find something useful at the Shed.</p>
+      <div class="offers-grid">
+        <div class="offer-card">
+          <div class="offer-icon timber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Workshop Access</h3>
+          <p>Use our woodworking and metalworking workshop during opening hours. Work on your own projects or help out with group ones.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Community &amp; Connection</h3>
+          <p>Meet men from around Yass Valley. Have a chat, share stories, and make new mates. The social side matters just as much as the work.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon sand">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Learn New Skills</h3>
+          <p>Our members are happy to pass on what they know. It does not matter if you are an experienced tradie or picking up a tool for the first time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tea-section">
+    <div class="section-inner tea-inner">
+      <div class="tea-visual">
+        <div class="tea-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+        </div>
+        <h3>First Wednesday<br>Morning Tea</h3>
+        <p>10:00 am &ndash; 11:30 am<br>Cakes &amp; pastries by Woolworths, Yass</p>
+      </div>
+      <div class="tea-content">
+        <div class="section-label">Monthly Highlight</div>
+        <h2>No tools, just talk.</h2>
+        <p>On the first Wednesday of every month, we put down the tools and focus on conversation. The workshops are quiet so everyone can hear each other.</p>
+        <p>Woolworths Yass kindly donates cakes and pastries. We sometimes have short talks on topics members find interesting, or other entertainment. It is a popular session.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">Get in touch</div>
+      <h2>Come and visit us</h2>
+      <p class="section-lead">We would love to see you. Come in during opening hours, give Peter a call, or send us an email.</p>
+      <div class="contact-grid">
+
+        <div class="contact-card">
+          <div class="contact-card-title">President</div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="contact-row-text"><strong>Name</strong>Peter Davidson</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="contact-row-text"><strong>Email</strong><a href="mailto:pdavidsonyvms@gmail.com">pdavidsonyvms@gmail.com</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.75a16 16 0 0 0 7.34 7.34l1.63-1.84a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="contact-row-text"><strong>Phone</strong><a href="tel:0439931579">0439 931 579</a></div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-title">Secretary</div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="contact-row-text"><strong>Name</strong>Peter Davidson</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="contact-row-text"><strong>Email</strong><a href="mailto:secretary@yassmensshed.org.au">secretary@yassmensshed.org.au</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="contact-row-text"><strong>Post</strong>1428 Yass Valley Way, North Yass NSW 2582</div>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <iframe
+            src="https://maps.google.com/maps?q=Yass+Valley+Men%27s+Shed&output=embed&z=15"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Yass Valley Men's Shed location">
+          </iframe>
+          <div class="map-footer">
+            <span>1428 Yass Valley Way, North Yass NSW 2582</span>
+            <a href="https://maps.google.com/?q=1428+Yass+Valley+Way+North+Yass+NSW+2582" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2>Ready to join the Shed?</h2>
+      <p>Membership is open to all men in Yass Valley. Print a form, fill it in, and bring it along on your next visit.</p>
+      <a href="https://yassmensshed.org.au/wp-content/uploads/2026/02/Updated-Membership-Form.pdf" target="_blank" class="btn-light">Download Membership Form (PDF)</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Yass Valley Men&rsquo;s Shed &nbsp;&middot;&nbsp; 1428 Yass Valley Way, North Yass NSW 2582 &nbsp;&middot;&nbsp; <a href="mailto:secretary@yassmensshed.org.au">secretary@yassmensshed.org.au</a></p>
+    <p style="margin-top:0.4rem;">Proudly serving the Yass Valley community since 2008.</p>
+  </footer>
+
+</body>
+</html>
